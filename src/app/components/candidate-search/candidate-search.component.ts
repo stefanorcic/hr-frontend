@@ -13,7 +13,7 @@ import { SkillService } from 'src/app/services/skill.service';
 export class CandidateSearchComponent implements OnInit {
 
   
-  displayedColumns = ['id', 'candidate'];
+  displayedColumns = ['id', 'candidate', 'email', 'phone', 'dateOfBirth'];
   dataSource: MatTableDataSource<ResponseCandidateSkill>;
 
   @Input() selectedSkill: Skill[];
