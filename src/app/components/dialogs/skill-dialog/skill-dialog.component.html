@@ -1,0 +1,24 @@
+<div class="container">
+  <h3 mat-dialog-title *ngIf="flag == 1">Add Skill</h3>
+  <h3 mat-dialog-title *ngIf="flag == 2">Update Skill</h3>
+  <h3 mat-dialog-title *ngIf="flag == 3">Delete Skill</h3>
+  <form class="mat-dialog-content" #formControl="ngForm">
+    <div class="form">
+      <mat-form-field>
+        <input matInput placeholder="Name" [(ngModel)]="data.name" name="name" [disabled]="flag==3" required>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button *ngIf="flag==1" [type]="submit" [mat-dialog-close]="1" (click)="add()" [disabled]="!formControl.valid">
+        Save
+      </button>
+      <button mat-button *ngIf="flag==2" [type]="submit" [mat-dialog-close]="1" (click)="update()" [disabled]="!formControl.valid">
+        Save
+      </button>
+      <button mat-button *ngIf="flag==3" [type]="submit" [mat-dialog-close]="1" (click)="delete()">
+        Delete
+      </button>
+      <button mat-button (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

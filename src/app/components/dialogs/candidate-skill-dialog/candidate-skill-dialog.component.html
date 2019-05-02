@@ -1,0 +1,25 @@
+<div class="container">
+    <h3 mat-dialog-title *ngIf="flag == 1">Add candidate-skill</h3>
+    <h3 mat-dialog-title *ngIf="flag == 2">Update candidate-skill: {{data.id}}</h3>
+    <h3 mat-dialog-title *ngIf="flag == 3">Delete candidate-skill: {{data.skill.name}}</h3>
+   
+    <form class="mat-dialog-content"  #formControl="ngForm">
+   
+      <div class="form">
+        <mat-form-field>
+          <mat-select [(ngModel)]="data.skillBean" placeholder="Skill" name="skillBean" [compareWith]="compareTo" [disabled]="flag == 3">
+            <mat-option *ngFor="let skillBean of skills" [value]="skillBean">
+              {{ skillBean.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+   
+      <div mat-dialog-actions>
+        <button mat-button *ngIf="flag == 1" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="add()">Add</button>
+        <button mat-button *ngIf="flag == 2" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="update()">Update</button>
+        <button mat-button *ngIf="flag == 3" [type]="submit" [mat-dialog-close]="1" (click)="delete()">Delete</button>
+        <button mat-button (click)="cancel()" tabindex="-1">cancel</button>
+      </div>
+    </form>
+   </div>

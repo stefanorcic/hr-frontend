@@ -1,0 +1,40 @@
+<div class="container">
+    <h3 mat-dialog-title *ngIf="flag == 1">Add Candidate</h3>
+    <h3 mat-dialog-title *ngIf="flag == 2">Update Candidate</h3>
+    <h3 mat-dialog-title *ngIf="flag == 3">Delete Candidate</h3>
+    <form class="mat-dialog-content" #formControl="ngForm">
+      <div class="form">
+        <mat-form-field>
+          <input matInput placeholder="Name" [(ngModel)]="data.name" name="name" [disabled]="flag==3" required>
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field>
+          <input matInput placeholder="contactNumber" [(ngModel)]="data.contactNumber" name="contactNumber" [disabled]="flag==3" required>
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Date of birth"[(ngModel)]="data.dateOfBirth" name="Date Of Birth" [disabled]="flag==3"  required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      
+      </div>
+      <div class="form">
+          <mat-form-field>
+            <input matInput placeholder="email" [(ngModel)]="data.email" name="email" [disabled]="flag==3" required>
+          </mat-form-field>
+        </div>
+      <div mat-dialog-actions>
+        <button mat-button *ngIf="flag==1" [type]="submit" [mat-dialog-close]="1" (click)="add()" [disabled]="!formControl.valid">
+          Save
+        </button>
+        <button mat-button *ngIf="flag==2" [type]="submit" [mat-dialog-close]="1" (click)="update()" [disabled]="!formControl.valid">
+          Save
+        </button>
+        <button mat-button *ngIf="flag==3" [type]="submit" [mat-dialog-close]="1" (click)="delete()">
+          Delete
+        </button>
+        <button mat-button (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>

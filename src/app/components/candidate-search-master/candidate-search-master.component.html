@@ -1,0 +1,31 @@
+
+<mat-toolbar color="primary">
+        <span class="title-center">Search candidates by skills</span>
+        
+      </mat-toolbar>
+
+<div class="container mat-elevation-z8">
+  
+        <span class="title-center"><mat-checkbox [(ngModel)]="byAll" [value]="byAll" >Candidate have all selected skills</mat-checkbox></span>
+    
+  
+    <form class="mat-dialog-content"  #formControl="ngForm">
+      
+      
+          <mat-selection-list [(ngModel)]="skill" [ngModelOptions]="{standalone: true}">
+              <mat-list-option *ngFor="let skill of skills" [value]="skill">
+                  {{ skill.name }}
+              </mat-list-option>
+          </mat-selection-list>
+                
+      <button mat-icon-button color="primary" (click)="selectSkill(skill)">
+        <mat-icon>search</mat-icon>
+      </button>
+        
+    
+  </form>
+ </div>
+
+ <div class="container mat-elevation z8">
+  <app-candidate-search *ngIf="selectedSkill" [selectedSkill]="selectedSkill" [byAll]="byAll"></app-candidate-search>
+</div>

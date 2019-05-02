@@ -1,0 +1,20 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-sidenav-container class="example-container">
+  <mat-sidenav opened mode="side">
+    <mat-accordion>
+      <a mat-button style="text-align:center">
+        <mat-icon [routerLink]="['']">home</mat-icon>
+      </a>
+      <mat-nav-list>
+        <a mat-button [routerLink]="['candidate']">Candidate</a>
+      </mat-nav-list>
+      <mat-nav-list>
+        <a mat-button [routerLink]="['skill']">Skill</a>
+      </mat-nav-list>
+      <mat-nav-list>
+        <a mat-button [routerLink]="['candidate-search-master']">Search</a>
+      </mat-nav-list>
+    </mat-accordion>
+  </mat-sidenav>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
